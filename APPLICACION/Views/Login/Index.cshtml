@@ -1,0 +1,119 @@
+﻿@using Importacion_Vehiculos.Models;
+@model UsuarioCLS
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Importación Vehiculos Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- vinculo a bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Temas-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- se vincula al hoja de estilo para definir el aspecto del formulario de login-->
+    <style>
+        body {
+            /*font-size: 12px;*/
+            /*font-size: 12px;*/
+            width: 100%;
+            height: 80%;
+            display: block;
+            background-image: url('../../images/Importacion_2.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            justify-content:center;
+            align-items:center;
+        }
+
+        #Contenedor {
+            width: 400px;
+            margin: 50px auto;
+             background-color: rgba(255,255,255,0.5);
+            /*background-color: #F3EDED;*/
+            /*border: 1px solid #ECE8E8;*/
+            height: 300px;
+            border-radius: 8px;
+            padding: 0px 9px 0px 9px;
+            
+        }
+
+
+        .Icon span {
+            background: #A8A6A6;
+            padding: 20px;
+            border-radius: 120px;
+        }
+
+        .Icon {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #FFF;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .opcioncontra {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="Contenedor">
+        <div class="Icon">
+            <!--Icono de usuario-->
+            @*<span class="glyphicon glyphicon-user"></span>*@
+             @*url('../../images/Importacion_2.jpg');*@
+            <img src="../../images/Logo_import.png" height="50px" width="150px" />
+        </div>
+        <div class="ContentForm"> 
+            @using (@Ajax.BeginForm("Login", "Login", new AjaxOptions
+            {
+                HttpMethod ="PORT",
+                OnSuccess = "Ingresar",
+                UpdateTargetId="divRespuesta"
+            },new { @id = "frmLogin" }))
+            {
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
+                    @Html.TextBox("usuario", null, new { @class = "form-control", @placeholder = "Usuario", @required = "true" })
+                </div>
+                <br>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
+                    @Html.Password("password", null, new { @class = "form-control", @placeholder = "*******", @required = "true" })
+                </div>
+                <br>
+
+                <button class="btn btn-lg btn-primary btn-block btn-signin" id="IngresoLog" type="submit">Entrar</button>
+                <div class="opcioncontra"><a href="">Olvidaste tu contraseña?</a></div>
+                <div id="divRespuesta"></div>
+            }
+
+            @*@if (Model != null && Model.mensajeError != null)
+            {
+                @Html.Label(Model.mensajeError, new { @class = "text-danger" })
+
+            }*@
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
+</body>
+
+</html>
+<script>
+    function Ingresar(respuesta) {
+        if (respuesta == "1") {
+            document.location.href = "@Url.Action("Index", "Marca")";
+            document.getElementById("divRespuesta").innerHTML = "";
+        } else {
+            alert("Usuario o contraseña incorrecta");
+        }
+    }
+</script>

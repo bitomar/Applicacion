@@ -1,0 +1,92 @@
+﻿@using Importacion_Vehiculos.Models
+@model List<VehiculosCLS>
+@{
+    ViewBag.Title = "Index";
+    List<SelectListItem> listaMarca = (List<SelectListItem>)ViewBag.listamarca;
+    List<SelectListItem> listaClasificacion = (List<SelectListItem>)ViewBag.listaClasificacion;
+}
+
+<h2>Listado de Vehiculos</h2>
+<hr>
+<br>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.ActionLink("Agregar Vehículos", "Agregar", "Vehiculos", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Generar Reporte", "Reporte_Excel", "Vehiculos", null, new { @class = "btn btn-success" })
+        </div>       
+    </div>
+</div>
+        <br>
+        <br>
+        <br>
+        <br>
+@using (Html.BeginForm("Index", "Vehiculos", FormMethod.Post, new { @id="frmFiltrado"}))
+{
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.Label("Filtro Marca")
+                    @Html.DropDownList("id_marca", listaMarca, null, new { @class = "form-control" })
+                </div>
+
+                <div class="col-md-4">
+                    @Html.Label("Filtro Clasificación")
+                    @Html.DropDownList("id_clasificacion", listaClasificacion, null, new { @class = "form-control" })
+                </div>
+            </div>
+            <br />
+            <br />          
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>@Html.LabelFor(p => Model[0].marca)</th>
+                                <th>@Html.LabelFor(p => Model[0].clasificacion)</th>
+                                <th>@Html.LabelFor(p => Model[0].motor_cc)</th>
+                                <th>@Html.LabelFor(p => Model[0].linea)</th>
+                                <th>@Html.LabelFor(p => Model[0].anio)</th>
+                                <th>@Html.LabelFor(p => Model[0].color)</th>
+                                <th>@Html.LabelFor(p => Model[0].numero_asientos)</th>
+                                <th>@Html.LabelFor(p => Model[0].tonelaje)</th>
+                                <th>@Html.LabelFor(p => Model[0].peso)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.marca</td>
+                                    <td>@item.clasificacion</td>
+                                    <td>@item.motor_cc</td>
+                                    <td>@item.linea</td>
+                                    <td>@item.anio</td>
+                                    <td>@item.color</td>
+                                    <td>@item.numero_asientos</td>
+                                    <td>@item.tonelaje</td>
+                                    <td>@item.peso</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                   
+                </div>
+            </div>
+        </div>
+ }
+
+<script>
+    var frmFiltrado = document.getElementById("frmFiltrado");
+    var controles = document.getElementsByClassName("form-control");
+    var ncontroles = controles.length;
+    for (var i = 0; i < ncontroles; i++)
+    {
+        controles[i].onchange = function () {
+            frmFiltrado.submit();
+        }
+    }
+</script>

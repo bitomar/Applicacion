@@ -1,0 +1,37 @@
+﻿@using Importacion_Vehiculos.Models
+@model List<MarcaCLS>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Marcas</h2>
+<hr>
+<br>
+@Html.ActionLink("Agregar","Agregar","Marca",null, new { @class="btn btn-primary"})
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">@Html.LabelFor(p=> Model[0].id_marca)</th>
+                        <th scope="col">@Html.LabelFor(p => Model[0].nombre_marca)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row" width="30%">@item.id_marca</th>
+                            <td width="50%">@item.nombre_marca</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

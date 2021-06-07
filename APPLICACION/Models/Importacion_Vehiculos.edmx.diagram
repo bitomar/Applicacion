@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ad5e4b0b6334b0e8d9ba102974e154f" Name="Diagram1">
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Articulos" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Clasificacion_Vehiculo" Width="1.5" PointX="1.5" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Departamento" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Embarque" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Empleados" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Estado" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Marca" Width="1.5" PointX="1.5" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Modalidad_Embarque" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Paises" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Proveedores" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Tipo_Articulo" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Vehiculos" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Articulos__Id_Es__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Articulos__Id_Pa__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Articulos__Id_Ti__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Articulos__Id_Ve__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Vehiculos__Id_Cl__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Empleados__Id_De__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Embarque__Id_Emp__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Embarque__Id_Mod__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Embarque__Id_Pro__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Embarque__Id_Tip__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Vehiculos__Id_Ma__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Proveedor__Id_Pa__2E1BDC42" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Importacion_VehiculosModel.Usuario" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="Importacion_VehiculosModel.FK__Usuario__Id_Empl__49C3F6B7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

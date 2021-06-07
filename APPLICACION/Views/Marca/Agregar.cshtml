@@ -1,0 +1,28 @@
+﻿@using Importacion_Vehiculos.Models
+@model MarcaCLS
+@{
+    ViewBag.Title = "Agregar";
+}
+<h2>Ingreso de Marcas</h2>
+<hr>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+            @using (Html.BeginForm("Agregar", "Marca", FormMethod.Post))
+            {
+                <div>
+                    @Html.LabelFor(p => p.nombre_marca)
+                    @Html.TextBoxFor(p => p.nombre_marca, new { @class = "form-control"})
+                    @Html.ValidationMessage("nombre_marca", new { @class="text-danger"})
+                </div>
+                <br />
+                <div style="margin:auto">
+                    <input type="submit" class="btn btn-primary" value="Guardar" />
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

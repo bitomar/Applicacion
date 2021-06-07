@@ -1,0 +1,952 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Importacion_VehiculosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Articulos">
+          <Key>
+            <PropertyRef Name="Id_Articulo" />
+          </Key>
+          <Property Name="Id_Articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Tipo_Articulo" Type="int" Nullable="false" />
+          <Property Name="Id_Estado" Type="int" Nullable="false" />
+          <Property Name="Id_Pais" Type="int" Nullable="false" />
+          <Property Name="Id_Vehiculo" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Parte_Vin" Type="int" Nullable="false" />
+          <Property Name="Precio_Venta" Type="float" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clasificacion_Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Clasificacion" />
+          </Key>
+          <Property Name="Id_Clasificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clasificacion" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Id_Departamento" />
+          </Key>
+          <Property Name="Id_Departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Departamento" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Embarque">
+          <Key>
+            <PropertyRef Name="Id_Embarque" />
+          </Key>
+          <Property Name="Id_Embarque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" Nullable="false" />
+          <Property Name="Id_Modalidad_Embarque" Type="int" Nullable="false" />
+          <Property Name="Id_Tipo_Articulo" Type="int" Nullable="false" />
+          <Property Name="Id_Proveedor" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Fecha_Recepcion" Type="date" Nullable="false" />
+          <Property Name="Valor_Articulo" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="Id_Empleado" />
+          </Key>
+          <Property Name="Id_Empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Departamento" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Dpi" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Puesto" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Fecha_Nacimiento" Type="date" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Jefe" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="Id_Estado" />
+          </Key>
+          <Property Name="Id_Estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Id_Marca" />
+          </Key>
+          <Property Name="Id_Marca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Marca" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modalidad_Embarque">
+          <Key>
+            <PropertyRef Name="Id_Modalidad_Embarque" />
+          </Key>
+          <Property Name="Id_Modalidad_Embarque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Modalidad" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="Id_Pais" />
+          </Key>
+          <Property Name="Id_Pais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Iso" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Pais" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Continente" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="Id_Proveedor" />
+          </Key>
+          <Property Name="Id_Proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Proveedor" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Id_Pais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tipo_Articulo">
+          <Key>
+            <PropertyRef Name="Id_Tipo_Articulo" />
+          </Key>
+          <Property Name="Id_Tipo_Articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo_Articulo" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id_Usuario" />
+          </Key>
+          <Property Name="Id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" Nullable="false" />
+          <Property Name="Habilitado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehiculos">
+          <Key>
+            <PropertyRef Name="Id_Vehiculo" />
+          </Key>
+          <Property Name="Id_Vehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Marca" Type="int" Nullable="false" />
+          <Property Name="Id_Clasificacion" Type="int" Nullable="false" />
+          <Property Name="Motor_cc" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Linea" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Numero_Asientos" Type="int" Nullable="false" />
+          <Property Name="Tonelaje" Type="float" Nullable="false" />
+          <Property Name="Peso" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Articulos__Id_Es__267ABA7A">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Articulos__Id_Pa__286302EC">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id_Pais" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="Id_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Articulos__Id_Ti__25869641">
+          <End Role="Tipo_Articulo" Type="Self.Tipo_Articulo" Multiplicity="1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Articulo">
+              <PropertyRef Name="Id_Tipo_Articulo" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="Id_Tipo_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Articulos__Id_Ve__286302EC">
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="0..1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculos">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Embarque__Id_Emp__29572725">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Embarque" Type="Self.Embarque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Embarque">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Embarque__Id_Mod__2A4B4B5E">
+          <End Role="Modalidad_Embarque" Type="Self.Modalidad_Embarque" Multiplicity="1" />
+          <End Role="Embarque" Type="Self.Embarque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modalidad_Embarque">
+              <PropertyRef Name="Id_Modalidad_Embarque" />
+            </Principal>
+            <Dependent Role="Embarque">
+              <PropertyRef Name="Id_Modalidad_Embarque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Embarque__Id_Pro__2B3F6F97">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="Embarque" Type="Self.Embarque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="Id_Proveedor" />
+            </Principal>
+            <Dependent Role="Embarque">
+              <PropertyRef Name="Id_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Embarque__Id_Tip__2C3393D0">
+          <End Role="Tipo_Articulo" Type="Self.Tipo_Articulo" Multiplicity="1" />
+          <End Role="Embarque" Type="Self.Embarque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Articulo">
+              <PropertyRef Name="Id_Tipo_Articulo" />
+            </Principal>
+            <Dependent Role="Embarque">
+              <PropertyRef Name="Id_Tipo_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__Id_De__2D27B809">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id_Departamento" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Proveedor__Id_Pa__2E1BDC42">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="1" />
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id_Pais" />
+            </Principal>
+            <Dependent Role="Proveedores">
+              <PropertyRef Name="Id_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__Id_Empl__49C3F6B7">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculos__Id_Cl__2F10007B">
+          <End Role="Clasificacion_Vehiculo" Type="Self.Clasificacion_Vehiculo" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clasificacion_Vehiculo">
+              <PropertyRef Name="Id_Clasificacion" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Clasificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculos__Id_Ma__2E1BDC42">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Id_Marca" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Importacion_VehiculosModelStoreContainer">
+          <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clasificacion_Vehiculo" EntityType="Self.Clasificacion_Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Embarque" EntityType="Self.Embarque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modalidad_Embarque" EntityType="Self.Modalidad_Embarque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Articulo" EntityType="Self.Tipo_Articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehiculos" EntityType="Self.Vehiculos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Articulos__Id_Es__267ABA7A" Association="Self.FK__Articulos__Id_Es__267ABA7A">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Articulos__Id_Pa__286302EC" Association="Self.FK__Articulos__Id_Pa__286302EC">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Articulos__Id_Ti__25869641" Association="Self.FK__Articulos__Id_Ti__25869641">
+            <End Role="Tipo_Articulo" EntitySet="Tipo_Articulo" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Articulos__Id_Ve__286302EC" Association="Self.FK__Articulos__Id_Ve__286302EC">
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Embarque__Id_Emp__29572725" Association="Self.FK__Embarque__Id_Emp__29572725">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Embarque" EntitySet="Embarque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Embarque__Id_Mod__2A4B4B5E" Association="Self.FK__Embarque__Id_Mod__2A4B4B5E">
+            <End Role="Modalidad_Embarque" EntitySet="Modalidad_Embarque" />
+            <End Role="Embarque" EntitySet="Embarque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Embarque__Id_Pro__2B3F6F97" Association="Self.FK__Embarque__Id_Pro__2B3F6F97">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Embarque" EntitySet="Embarque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Embarque__Id_Tip__2C3393D0" Association="Self.FK__Embarque__Id_Tip__2C3393D0">
+            <End Role="Tipo_Articulo" EntitySet="Tipo_Articulo" />
+            <End Role="Embarque" EntitySet="Embarque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__Id_De__2D27B809" Association="Self.FK__Empleados__Id_De__2D27B809">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Proveedor__Id_Pa__2E1BDC42" Association="Self.FK__Proveedor__Id_Pa__2E1BDC42">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Proveedores" EntitySet="Proveedores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__Id_Empl__49C3F6B7" Association="Self.FK__Usuario__Id_Empl__49C3F6B7">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculos__Id_Cl__2F10007B" Association="Self.FK__Vehiculos__Id_Cl__2F10007B">
+            <End Role="Clasificacion_Vehiculo" EntitySet="Clasificacion_Vehiculo" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculos__Id_Ma__2E1BDC42" Association="Self.FK__Vehiculos__Id_Ma__2E1BDC42">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Importacion_VehiculosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Articulos">
+          <Key>
+            <PropertyRef Name="Id_Articulo" />
+          </Key>
+          <Property Name="Id_Articulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Tipo_Articulo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Estado" Type="Int32" Nullable="false" />
+          <Property Name="Id_Pais" Type="Int32" Nullable="false" />
+          <Property Name="Id_Vehiculo" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parte_Vin" Type="Int32" Nullable="false" />
+          <Property Name="Precio_Venta" Type="Double" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK__Articulos__Id_Es__267ABA7A" FromRole="Articulos" ToRole="Estado" />
+          <NavigationProperty Name="Paises" Relationship="Self.FK__Articulos__Id_Pa__286302EC" FromRole="Articulos" ToRole="Paises" />
+          <NavigationProperty Name="Tipo_Articulo" Relationship="Self.FK__Articulos__Id_Ti__25869641" FromRole="Articulos" ToRole="Tipo_Articulo" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.FK__Articulos__Id_Ve__286302EC" FromRole="Articulos" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="Clasificacion_Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Clasificacion" />
+          </Key>
+          <Property Name="Id_Clasificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clasificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.FK__Vehiculos__Id_Cl__2F10007B" FromRole="Clasificacion_Vehiculo" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Id_Departamento" />
+          </Key>
+          <Property Name="Id_Departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Departamento1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK__Empleados__Id_De__2D27B809" FromRole="Departamento" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Embarque">
+          <Key>
+            <PropertyRef Name="Id_Embarque" />
+          </Key>
+          <Property Name="Id_Embarque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+          <Property Name="Id_Modalidad_Embarque" Type="Int32" Nullable="false" />
+          <Property Name="Id_Tipo_Articulo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Proveedor" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Recepcion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Valor_Articulo" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK__Embarque__Id_Emp__29572725" FromRole="Embarque" ToRole="Empleados" />
+          <NavigationProperty Name="Modalidad_Embarque" Relationship="Self.FK__Embarque__Id_Mod__2A4B4B5E" FromRole="Embarque" ToRole="Modalidad_Embarque" />
+          <NavigationProperty Name="Proveedores" Relationship="Self.FK__Embarque__Id_Pro__2B3F6F97" FromRole="Embarque" ToRole="Proveedores" />
+          <NavigationProperty Name="Tipo_Articulo" Relationship="Self.FK__Embarque__Id_Tip__2C3393D0" FromRole="Embarque" ToRole="Tipo_Articulo" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="Id_Empleado" />
+          </Key>
+          <Property Name="Id_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Departamento" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dpi" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Puesto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Jefe" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK__Empleados__Id_De__2D27B809" FromRole="Empleados" ToRole="Departamento" />
+          <NavigationProperty Name="Embarque" Relationship="Self.FK__Embarque__Id_Emp__29572725" FromRole="Empleados" ToRole="Embarque" />
+          <NavigationProperty Name="Usuario" Relationship="Importacion_VehiculosModel.FK__Usuario__Id_Empl__49C3F6B7" FromRole="Empleados" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="Id_Estado" />
+          </Key>
+          <Property Name="Id_Estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Articulos" Relationship="Self.FK__Articulos__Id_Es__267ABA7A" FromRole="Estado" ToRole="Articulos" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Id_Marca" />
+          </Key>
+          <Property Name="Id_Marca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.FK__Vehiculos__Id_Ma__2E1BDC42" FromRole="Marca" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="Modalidad_Embarque">
+          <Key>
+            <PropertyRef Name="Id_Modalidad_Embarque" />
+          </Key>
+          <Property Name="Id_Modalidad_Embarque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Modalidad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Embarque" Relationship="Self.FK__Embarque__Id_Mod__2A4B4B5E" FromRole="Modalidad_Embarque" ToRole="Embarque" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="Id_Pais" />
+          </Key>
+          <Property Name="Id_Pais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Iso" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Continente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Articulos" Relationship="Self.FK__Articulos__Id_Pa__286302EC" FromRole="Paises" ToRole="Articulos" />
+          <NavigationProperty Name="Proveedores" Relationship="Self.FK__Proveedor__Id_Pa__2E1BDC42" FromRole="Paises" ToRole="Proveedores" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="Id_Proveedor" />
+          </Key>
+          <Property Name="Id_Proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Proveedor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Pais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Embarque" Relationship="Self.FK__Embarque__Id_Pro__2B3F6F97" FromRole="Proveedores" ToRole="Embarque" />
+          <NavigationProperty Name="Paises" Relationship="Self.FK__Proveedor__Id_Pa__2E1BDC42" FromRole="Proveedores" ToRole="Paises" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Articulo">
+          <Key>
+            <PropertyRef Name="Id_Tipo_Articulo" />
+          </Key>
+          <Property Name="Id_Tipo_Articulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_Articulo1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Articulos" Relationship="Self.FK__Articulos__Id_Ti__25869641" FromRole="Tipo_Articulo" ToRole="Articulos" />
+          <NavigationProperty Name="Embarque" Relationship="Self.FK__Embarque__Id_Tip__2C3393D0" FromRole="Tipo_Articulo" ToRole="Embarque" />
+        </EntityType>
+        <EntityType Name="Vehiculos">
+          <Key>
+            <PropertyRef Name="Id_Vehiculo" />
+          </Key>
+          <Property Name="Id_Vehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Marca" Type="Int32" Nullable="false" />
+          <Property Name="Id_Clasificacion" Type="Int32" Nullable="false" />
+          <Property Name="Motor_cc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Linea" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Anio" Type="Int32" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Numero_Asientos" Type="Int32" Nullable="false" />
+          <Property Name="Tonelaje" Type="Double" Nullable="false" />
+          <Property Name="Peso" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Articulos" Relationship="Self.FK__Articulos__Id_Ve__286302EC" FromRole="Vehiculos" ToRole="Articulos" />
+          <NavigationProperty Name="Clasificacion_Vehiculo" Relationship="Self.FK__Vehiculos__Id_Cl__2F10007B" FromRole="Vehiculos" ToRole="Clasificacion_Vehiculo" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK__Vehiculos__Id_Ma__2E1BDC42" FromRole="Vehiculos" ToRole="Marca" />
+        </EntityType>
+        <Association Name="FK__Articulos__Id_Es__267ABA7A">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Articulos__Id_Pa__286302EC">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id_Pais" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="Id_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Articulos__Id_Ti__25869641">
+          <End Role="Tipo_Articulo" Type="Self.Tipo_Articulo" Multiplicity="1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Articulo">
+              <PropertyRef Name="Id_Tipo_Articulo" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="Id_Tipo_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Articulos__Id_Ve__286302EC">
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="0..1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculos">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculos__Id_Cl__2F10007B">
+          <End Role="Clasificacion_Vehiculo" Type="Self.Clasificacion_Vehiculo" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clasificacion_Vehiculo">
+              <PropertyRef Name="Id_Clasificacion" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Clasificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleados__Id_De__2D27B809">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Id_Departamento" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Embarque__Id_Emp__29572725">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Embarque" Type="Self.Embarque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Embarque">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Embarque__Id_Mod__2A4B4B5E">
+          <End Role="Modalidad_Embarque" Type="Self.Modalidad_Embarque" Multiplicity="1" />
+          <End Role="Embarque" Type="Self.Embarque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modalidad_Embarque">
+              <PropertyRef Name="Id_Modalidad_Embarque" />
+            </Principal>
+            <Dependent Role="Embarque">
+              <PropertyRef Name="Id_Modalidad_Embarque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Embarque__Id_Pro__2B3F6F97">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="Embarque" Type="Self.Embarque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="Id_Proveedor" />
+            </Principal>
+            <Dependent Role="Embarque">
+              <PropertyRef Name="Id_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Embarque__Id_Tip__2C3393D0">
+          <End Role="Tipo_Articulo" Type="Self.Tipo_Articulo" Multiplicity="1" />
+          <End Role="Embarque" Type="Self.Embarque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Articulo">
+              <PropertyRef Name="Id_Tipo_Articulo" />
+            </Principal>
+            <Dependent Role="Embarque">
+              <PropertyRef Name="Id_Tipo_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculos__Id_Ma__2E1BDC42">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Id_Marca" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Proveedor__Id_Pa__2E1BDC42">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="1" />
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="Id_Pais" />
+            </Principal>
+            <Dependent Role="Proveedores">
+              <PropertyRef Name="Id_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Importacion_VehiculosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articulos" EntityType="Self.Articulos" />
+          <EntitySet Name="Clasificacion_Vehiculo" EntityType="Self.Clasificacion_Vehiculo" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Embarque" EntityType="Self.Embarque" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" />
+          <EntitySet Name="Modalidad_Embarque" EntityType="Self.Modalidad_Embarque" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tipo_Articulo" EntityType="Self.Tipo_Articulo" />
+          <EntitySet Name="Vehiculos" EntityType="Self.Vehiculos" />
+          <AssociationSet Name="FK__Articulos__Id_Es__267ABA7A" Association="Self.FK__Articulos__Id_Es__267ABA7A">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Articulos__Id_Pa__286302EC" Association="Self.FK__Articulos__Id_Pa__286302EC">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Articulos__Id_Ti__25869641" Association="Self.FK__Articulos__Id_Ti__25869641">
+            <End Role="Tipo_Articulo" EntitySet="Tipo_Articulo" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Articulos__Id_Ve__286302EC" Association="Self.FK__Articulos__Id_Ve__286302EC">
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculos__Id_Cl__2F10007B" Association="Self.FK__Vehiculos__Id_Cl__2F10007B">
+            <End Role="Clasificacion_Vehiculo" EntitySet="Clasificacion_Vehiculo" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleados__Id_De__2D27B809" Association="Self.FK__Empleados__Id_De__2D27B809">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Embarque__Id_Emp__29572725" Association="Self.FK__Embarque__Id_Emp__29572725">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Embarque" EntitySet="Embarque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Embarque__Id_Mod__2A4B4B5E" Association="Self.FK__Embarque__Id_Mod__2A4B4B5E">
+            <End Role="Modalidad_Embarque" EntitySet="Modalidad_Embarque" />
+            <End Role="Embarque" EntitySet="Embarque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Embarque__Id_Pro__2B3F6F97" Association="Self.FK__Embarque__Id_Pro__2B3F6F97">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Embarque" EntitySet="Embarque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Embarque__Id_Tip__2C3393D0" Association="Self.FK__Embarque__Id_Tip__2C3393D0">
+            <End Role="Tipo_Articulo" EntitySet="Tipo_Articulo" />
+            <End Role="Embarque" EntitySet="Embarque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculos__Id_Ma__2E1BDC42" Association="Self.FK__Vehiculos__Id_Ma__2E1BDC42">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Proveedor__Id_Pa__2E1BDC42" Association="Self.FK__Proveedor__Id_Pa__2E1BDC42">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Proveedores" EntitySet="Proveedores" />
+          </AssociationSet>
+          <EntitySet Name="Usuario" EntityType="Importacion_VehiculosModel.Usuario" />
+          <AssociationSet Name="FK__Usuario__Id_Empl__49C3F6B7" Association="Importacion_VehiculosModel.FK__Usuario__Id_Empl__49C3F6B7">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id_Usuario" />
+          </Key>
+          <Property Name="Id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+          <Property Name="Habilitado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empleados" Relationship="Importacion_VehiculosModel.FK__Usuario__Id_Empl__49C3F6B7" FromRole="Usuario" ToRole="Empleados" />
+        </EntityType>
+        <Association Name="FK__Usuario__Id_Empl__49C3F6B7">
+          <End Type="Importacion_VehiculosModel.Empleados" Role="Empleados" Multiplicity="1" />
+          <End Type="Importacion_VehiculosModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Importacion_VehiculosModelStoreContainer" CdmEntityContainer="Importacion_VehiculosEntities">
+          <EntitySetMapping Name="Articulos">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Articulos">
+              <MappingFragment StoreEntitySet="Articulos">
+                <ScalarProperty Name="Id_Articulo" ColumnName="Id_Articulo" />
+                <ScalarProperty Name="Id_Tipo_Articulo" ColumnName="Id_Tipo_Articulo" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+                <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Parte_Vin" ColumnName="Parte_Vin" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clasificacion_Vehiculo">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Clasificacion_Vehiculo">
+              <MappingFragment StoreEntitySet="Clasificacion_Vehiculo">
+                <ScalarProperty Name="Id_Clasificacion" ColumnName="Id_Clasificacion" />
+                <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="Id_Departamento" ColumnName="Id_Departamento" />
+                <ScalarProperty Name="Departamento1" ColumnName="Departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Embarque">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Embarque">
+              <MappingFragment StoreEntitySet="Embarque">
+                <ScalarProperty Name="Id_Embarque" ColumnName="Id_Embarque" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Modalidad_Embarque" ColumnName="Id_Modalidad_Embarque" />
+                <ScalarProperty Name="Id_Tipo_Articulo" ColumnName="Id_Tipo_Articulo" />
+                <ScalarProperty Name="Id_Proveedor" ColumnName="Id_Proveedor" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Fecha_Recepcion" ColumnName="Fecha_Recepcion" />
+                <ScalarProperty Name="Valor_Articulo" ColumnName="Valor_Articulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Empleados">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Departamento" ColumnName="Id_Departamento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Dpi" ColumnName="Dpi" />
+                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Estado1" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marca">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="Id_Marca" ColumnName="Id_Marca" />
+                <ScalarProperty Name="Nombre_Marca" ColumnName="Nombre_Marca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modalidad_Embarque">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Modalidad_Embarque">
+              <MappingFragment StoreEntitySet="Modalidad_Embarque">
+                <ScalarProperty Name="Id_Modalidad_Embarque" ColumnName="Id_Modalidad_Embarque" />
+                <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paises">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Paises">
+              <MappingFragment StoreEntitySet="Paises">
+                <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+                <ScalarProperty Name="Iso" ColumnName="Iso" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Continente" ColumnName="Continente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Proveedores">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="Id_Proveedor" ColumnName="Id_Proveedor" />
+                <ScalarProperty Name="Nombre_Proveedor" ColumnName="Nombre_Proveedor" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Articulo">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Tipo_Articulo">
+              <MappingFragment StoreEntitySet="Tipo_Articulo">
+                <ScalarProperty Name="Id_Tipo_Articulo" ColumnName="Id_Tipo_Articulo" />
+                <ScalarProperty Name="Tipo_Articulo1" ColumnName="Tipo_Articulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehiculos">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Vehiculos">
+              <MappingFragment StoreEntitySet="Vehiculos">
+                <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+                <ScalarProperty Name="Id_Marca" ColumnName="Id_Marca" />
+                <ScalarProperty Name="Id_Clasificacion" ColumnName="Id_Clasificacion" />
+                <ScalarProperty Name="Motor_cc" ColumnName="Motor_cc" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Numero_Asientos" ColumnName="Numero_Asientos" />
+                <ScalarProperty Name="Tonelaje" ColumnName="Tonelaje" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="Importacion_VehiculosModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+                <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

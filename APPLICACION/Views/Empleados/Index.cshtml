@@ -1,0 +1,58 @@
+﻿@using Importacion_Vehiculos.Models
+@model List<EmpleadosCLS>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Reporte Empleados</h2>
+<hr>
+<br>
+<div class="row">
+    <div class="col-md-4">        
+        @Html.ActionLink("Generar Reporte", "Reporte_Empleados", "Empleados", null, new { @class = "btn btn-success" })
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">@Html.LabelFor(p => Model[0].id_empleado)</th>
+                        <th scope="col">@Html.LabelFor(p => Model[0].departamento)</th>
+                        <th nowrap>@Html.LabelFor(p => Model[0].nombre)</th>
+                        <th nowrap>@Html.LabelFor(p => Model[0].apellidos)</th>
+                        <th scope="col">@Html.LabelFor(p => Model[0].dpi)</th>
+                        <th nowrap>@Html.LabelFor(p => Model[0].puesto)</th>
+                        <th nowrap>@Html.LabelFor(p => Model[0].fecha_nacimiento)</th>
+                        <th scope="col">@Html.LabelFor(p => Model[0].direccion)</th>
+                        <th scope="col">@Html.LabelFor(p => Model[0].email)</th>
+                        <th nowrap>@Html.LabelFor(p => Model[0].telefono)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.id_empleado</td>
+                            <td>@item.departamento</td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:200px;">@item.nombre</td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:200px;">@item.apellidos</td>
+                            <td>@item.dpi</td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:200px;">@item.puesto</td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:200px;">@item.fecha_nacimiento.ToShortDateString()</td>
+                            <td>@item.direccion</td>
+                            <td>@item.email</td>
+                            <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:200px;">@item.telefono</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

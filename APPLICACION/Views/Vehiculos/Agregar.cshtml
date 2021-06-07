@@ -1,0 +1,88 @@
+﻿@using Importacion_Vehiculos.Models
+@model VehiculosCLS
+@{
+    ViewBag.Title = "Ingreso de Vehiculos";
+    List<SelectListItem> listaMarca = (List<SelectListItem>) ViewBag.listamarca;
+    List<SelectListItem> listaClasificacion = (List<SelectListItem>)ViewBag.listaClasificacion;
+}
+
+<h2>Agregar Vehículos</h2>
+<hr>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            @using (Html.BeginForm("Agregar", "Vehiculos", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.id_marca)
+                        @Html.DropDownList("id_marca", listaMarca, null, new { @class = "form-control" })
+                        @Html.ValidationMessage("id_marca", new { @class = "text-danger" })
+                    </div>
+                  
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.id_clasificacion)
+                        @Html.DropDownList("id_clasificacion", listaClasificacion, null, new { @class = "form-control" })
+                        @Html.ValidationMessage("id_clasificacion", new { @class = "text-danger" })
+                    </div>
+                    
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.motor_cc)
+                        @Html.TextBoxFor(p => p.motor_cc, new { @class = "form-control" })
+                        @Html.ValidationMessage("motor_cc", new { @class = "text-danger" })
+                    </div>
+                </div>
+                
+                    <br />
+                <div class="row">
+                        <div class="col-md-4">
+                            @Html.LabelFor(p => p.linea)
+                            @Html.TextBoxFor(p => p.linea, new { @class = "form-control" })
+                            @Html.ValidationMessage("linea", new { @class = "text-danger" })
+                        </div>
+                        
+                        <div class="col-md-4">
+                            @Html.LabelFor(p => p.anio)
+                            @Html.TextBoxFor(p => p.anio, new { @class = "form-control" })
+                            @Html.ValidationMessage("anio", new { @class = "text-danger" })
+                        </div>
+                        
+                        <div class="col-md-4">
+                            @Html.LabelFor(p => p.color)
+                            @Html.TextBoxFor(p => p.color, new { @class = "form-control" })
+                            @Html.ValidationMessage("color", new { @class = "text-danger" })
+                        </div>
+                 </div>
+                <div class="row">
+                    <br />
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.numero_asientos)
+                        @Html.TextBoxFor(p => p.numero_asientos, new { @class = "form-control" })
+                        @Html.ValidationMessage("numero_asientos", new { @class = "text-danger" })
+                    </div>
+                    
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.tonelaje)
+                        @Html.TextBoxFor(p => p.tonelaje, new { @class = "form-control" })
+                        @Html.ValidationMessage("tonelaje", new { @class = "text-danger" })
+                    </div>
+                    
+                    <div class="col-md-4">
+                        @Html.LabelFor(p => p.peso)
+                        @Html.TextBoxFor(p => p.peso, new { @class = "form-control" })
+                        @Html.ValidationMessage("peso", new { @class = "text-danger" })
+                    </div>
+                </div>
+                    <br />
+                    <div style="margin:auto">
+                        <input type="submit" class="btn btn-primary" value="Guardar" />
+                    </div>
+                    }
+
+                </div>
+
+                    </div>
+                </div>
+
